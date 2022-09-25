@@ -9,7 +9,7 @@ pipeline {
         stages {
           stage('pull-code') { 
             steps {
-                git branch: 'main', credentialsId: 'a869e874-5449-42e0-9dd0-6f89c98e296d', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
+                git branch: 'main', credentialsId: 'Github_tkn', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
           }
          
         }
