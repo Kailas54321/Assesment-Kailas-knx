@@ -18,7 +18,7 @@ pipeline {
              sh 'docker build -t test1:$BUILD_NUMBER .'
             }
           }
-         /*  
+          
            stage('push') { 
             steps {
               sh 'sudo docker tag test1:$BUILD_NUMBER kailas54321/test1:$BUILD_NUMBER'
@@ -36,6 +36,6 @@ pipeline {
 
             }
           }
-      */
+      
       } 
     }
