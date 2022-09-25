@@ -13,12 +13,12 @@ pipeline {
           }
          
         }
-       /* stage('Build') { 
+          stage('Build') { 
             steps {
              sh 'sudo docker build -t test1:$BUILD_NUMBER .'
             }
           }
-          
+         /*  
            stage('push') { 
             steps {
               sh 'sudo docker tag test1:$BUILD_NUMBER kailas54321/test1:$BUILD_NUMBER'
