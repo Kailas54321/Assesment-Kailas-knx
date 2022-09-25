@@ -18,8 +18,13 @@ pipeline {
              sh 'docker build -t test1:$BUILD_NUMBER .'
             }
           }
-          
-           stage('push') { 
+            stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+            stage('push') { 
             steps {
               sh 'docker tag test1:$BUILD_NUMBER kailas54321/test1:$BUILD_NUMBER'
               //sh'echo $dockerhub_PSW | sudo docker login -u $dockerhub_PSW -p ${dockerhub}'
