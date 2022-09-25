@@ -25,7 +25,7 @@ pipeline {
               //sh'echo $dockerhub_PSW | sudo docker login -u $dockerhub_PSW -p ${dockerhub}'
               //sh'echo $dockerhub_PSW sudo docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
               // This step should not normally be used in your script. Consult the inline help for details.
-           withDockerRegistry(credentialsId: 'dockerhub-jenkin', url: 'https://hub.docker.com/repository/docker/kailas54321/test1') {
+             withDockerRegistry(credentialsId: 'dockerhub-jenkin', url: 'kailas54321') {
     // some block
 }
               sh'docker push kailas54321/test1:$BUILD_NUMBER'
