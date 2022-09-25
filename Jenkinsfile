@@ -15,7 +15,7 @@ pipeline {
         }
           stage('Build') { 
             steps {
-             sh 'sudo docker build -t test1:$BUILD_NUMBER .'
+             sh 'sudo -v docker build -t test1:$BUILD_NUMBER .'
             }
           }
          /*  
