@@ -34,7 +34,7 @@ pipeline {
             steps {
              
               sh'docker pull kailas54321/knx1:$BUILD_NUMBER'
-              sh'docker run -itd -p 81:80 kailas54321/knx1:$BUILD_NUMBER'
+              sh'docker run -itd -p 80:80 kailas54321/knx1:$BUILD_NUMBER'
 
             }
           }

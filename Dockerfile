@@ -1,24 +1,3 @@
-#FROM python:3.7.3-stretch
-
-## Step 1:
-# Create a working directory
-#WORKDIR /app
-## Step 2:
-# Copy source code to working directory
-#COPY . /app
-
-## Step 3:
-# Install packages from requirements.txt
-# hadolint ignore=DL3013
-#RUN pip install -r /app/requirements.txt
-
-## Step 4:
-# Expose port 80
-#EXPOSE 80
-## Step 5:
-# Run app.py at container launch
-#CMD [ "python3", "app.py" ]
-
 FROM python:3.7.3-stretch
 
 ## Step 1:
@@ -36,10 +15,8 @@ RUN pip install --requirement /app/requirements.txt
 
 ## Step 4:
 # Expose port 80
-EXPOSE 81
+EXPOSE 80
 
 ## Step 5:
 # Run app.py at container launch
 CMD [ "python3", "app.py" ]
-#RUN chmod +x docker_run.sh
-#CMD [ "./docker_run.sh" ]
