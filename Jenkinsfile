@@ -39,7 +39,7 @@ pipeline {
 
             }
           }
-          /*stage('pull & deploy') { 
+          stage('pull & deploy') { 
             steps {
              
               sh'docker pull kailas54321/test1:$BUILD_NUMBER'
@@ -47,7 +47,6 @@ pipeline {
 
             }
           }
-      */
       } 
   }
     
