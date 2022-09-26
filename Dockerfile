@@ -40,6 +40,6 @@ EXPOSE 8000
 
 ## Step 5:
 # Run app.py at container launch
-#CMD [ "python3", "app.py" ]
-RUN chmod +x docker_run.sh
-CMD [ "./docker_run.sh" ]
+CMD [ "python3", "app.py" ]
+#RUN chmod +x docker_run.sh
+#CMD [ "./docker_run.sh" ]
