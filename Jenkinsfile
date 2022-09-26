@@ -24,7 +24,7 @@ pipeline {
               sh 'docker tag knx1:$BUILD_NUMBER kailas54321/knx1:$BUILD_NUMBER'
               //sh'echo $dockerhub_PSW | docker login -u $dockerhub_PSW -p ${dockerhub}'
               sh 'sudo chmod 666 /var/run/docker.sock'
-              sh 'cat password.txt | docker login --username kailas54321 -p --password-stdin'
+              sh 'cat password.txt | docker login --username kailas54321 --password-stdin'
               //sh'echo $dockerhub_PSW docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
               sh'docker push kailas54321/knx1:$BUILD_NUMBER'
 
