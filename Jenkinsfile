@@ -10,8 +10,9 @@ pipeline {
           stage('pull-code') { 
             steps {
                 git branch: 'main', credentialsId: 'Github_tkn', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
-          }
+               }
          
+            }
         }
           stage('Build') { 
             steps {
@@ -49,5 +50,5 @@ pipeline {
           }
       */
       } 
-}
+
     
