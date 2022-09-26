@@ -36,7 +36,7 @@ RUN pip install --requirement /app/requirements.txt
 
 ## Step 4:
 # Expose port 80
-EXPOSE 80
+EXPOSE 81
 
 ## Step 5:
 # Run app.py at container launch
