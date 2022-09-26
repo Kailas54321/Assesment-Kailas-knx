@@ -13,7 +13,6 @@ pipeline {
                }
          
             }
-        }
           stage('Build') { 
             steps {
              sh 'docker build -t test1:$BUILD_NUMBER .'
@@ -50,5 +49,5 @@ pipeline {
           }
       */
       } 
-
+  }
     
