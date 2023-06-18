@@ -3,9 +3,9 @@ pipeline {
         agent any
         
         
-        // environment{
-        // 	dockerhub=credentials('dockerhub')
-        //    }
+        environment{
+        	dockerhub=credentials('dockerhub')
+           }
         stages {
           stage('pull-code') { 
             steps {
