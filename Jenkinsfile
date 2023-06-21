@@ -5,7 +5,7 @@ pipeline {
         
         // environment{
         // 	dockerhub=credentials('dockerhub')
-           }
+           // }
         stages {
           stage('pull-code') { 
             steps {
