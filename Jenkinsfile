@@ -53,11 +53,7 @@ stage('Deploy to ECS') {
                         def taskDefinition = 'task-de' // Replace with your Task Definition ARN
 
                         // Update ECS service with the new task definition
-                        ecsUpdateService(
-                            cluster: cluster,
-                            service: serviceName,
-                            taskDefinition: taskDefinition
-                        )
+                        sh "aws ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
                     }
                 }
             }
