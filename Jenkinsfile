@@ -49,7 +49,7 @@ stage('Deploy to ECS') {
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ECR_CRED']]){
                         // Configure ECS deployment
                         def cluster = 'ecs_cluster' // Replace with your ECS cluster name
-                        def serviceName = 'my-ecs-service' // Replace with your ECS service name
+                        def serviceName = 'ESC_SERVICE' // Replace with your ECS service name
                         def taskDefinition = 'task-de' // Replace with your Task Definition ARN
                         def region = 'us-east-2' 
 
