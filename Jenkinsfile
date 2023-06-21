@@ -19,13 +19,24 @@ pipeline {
             }
           }
           
-           stage('push') { 
+        //    stage('push') { 
+        //     steps {
+        //       sh 'export AWS_ACCESS_KEY_ID=$AWS_ECR_CRED'
+        //       sh 'export AWS_SECRET_ACCESS_KEY=$AWS_ECR_CRED'
+        //       sh 'ECR_LOGIN_CMD=$(aws ecr get-login-password --region us-east-2)'
+        //       sh 'echo "$ECR_LOGIN_CMD" | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
+        //       sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+
+        //     }
+        //   }
+        stage('push') { 
             steps {
-              sh 'export AWS_ACCESS_KEY_ID=$AWS_ECR_CRED'
-              sh 'export AWS_SECRET_ACCESS_KEY=$AWS_ECR_CRED'
-              sh 'ECR_LOGIN_CMD=$(aws ecr get-login-password --region us-east-2)'
-              sh 'echo "$ECR_LOGIN_CMD" | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
-              sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+              sh 'docker tag knx1:$BUILD_NUMBER kailas54321/knx1:$BUILD_NUMBER'
+              //sh'echo $dockerhub_PSW | docker login -u $dockerhub_PSW -p ${dockerhub}'
+              sh 'sudo chmod 666 /var/run/docker.sock'
+             // sh 'cat password.txt | docker login --username kailas54321 --password-stdin'
+              //sh'echo $dockerhub_PSW docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
+              sh'docker push kailas54321/knx1:$BUILD_NUMBER'
 
             }
           }
