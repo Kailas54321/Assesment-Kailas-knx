@@ -30,14 +30,37 @@ pipeline {
 
             }
           }
-          stage('pull & deploy') { 
-            steps {
+    //       stage('pull & deploy') { 
+    //         steps {
              
-              sh'docker pull kailas54321/knx1:$BUILD_NUMBER'
-              sh'docker run -itd -p 87:80 kailas54321/knx1:$BUILD_NUMBER'
+    //           sh'docker pull kailas54321/knx1:$BUILD_NUMBER'
+    //           sh'docker run -itd -p 87:80 kailas54321/knx1:$BUILD_NUMBER'
 
-            }
-          }
+    //         }
+    //       }
           
-      } 
+    //   } 
+    // }
+
+stage('Deploy to ECS') {
+            steps {
+                script {
+                    // Deploy the Docker image to ECS using the ECS plugin
+                    withAWS(credentials: 'AWS_ECR_CRED') {
+                        // Configure ECS deployment
+                        def cluster = 'ecs_cluster' // Replace with your ECS cluster name
+                        def serviceName = 'my-ecs-service' // Replace with your ECS service name
+                        def taskDefinition = 'task-de' // Replace with your Task Definition ARN
+
+                        // Update ECS service with the new task definition
+                        ecsUpdateService(
+                            cluster: cluster,
+                            service: serviceName,
+                            taskDefinition: taskDefinition
+                        )
+                    }
+                }
+            }
+        }
     }
+}
