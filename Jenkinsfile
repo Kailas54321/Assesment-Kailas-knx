@@ -21,12 +21,15 @@ pipeline {
           
            stage('push') { 
             steps {
-              sh 'docker tag knx1:$BUILD_NUMBER kailas54321/knx1:$BUILD_NUMBER'
-              //sh'echo $dockerhub_PSW | docker login -u $dockerhub_PSW -p ${dockerhub}'
-              sh 'sudo chmod 666 /var/run/docker.sock'
-             // sh 'cat password.txt | docker login --username kailas54321 --password-stdin'
-              //sh'echo $dockerhub_PSW docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
-              sh'docker push kailas54321/knx1:$BUILD_NUMBER'
+              sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
+              sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+              
+            //   sh 'docker tag knx1:$BUILD_NUMBER kailas54321/knx1:$BUILD_NUMBER'
+            //   //sh'echo $dockerhub_PSW | docker login -u $dockerhub_PSW -p ${dockerhub}'
+            //   sh 'sudo chmod 666 /var/run/docker.sock'
+            //  // sh 'cat password.txt | docker login --username kailas54321 --password-stdin'
+            //   //sh'echo $dockerhub_PSW docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
+            //   sh'docker push kailas54321/knx1:$BUILD_NUMBER'
 
             }
           }
