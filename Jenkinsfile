@@ -51,12 +51,13 @@ stage('Deploy to ECS') {
                         def cluster = 'ecs_cluster' // Replace with your ECS cluster name
                         def serviceName = 'my-ecs-service' // Replace with your ECS service name
                         def taskDefinition = 'task-de' // Replace with your Task Definition ARN
+                        def region = 'us-east-2' 
 
                         // Update ECS service with the new task definition
-                        sh "aws ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
+                        sh "aws --region ${region} ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
                     }
                 }
             }
-        }
+        }   
     }
 }
