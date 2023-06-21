@@ -23,7 +23,7 @@ pipeline {
             steps {
               sh 'export AWS_ACCESS_KEY_ID=$AWS_ECR_CRED'
               sh 'export AWS_SECRET_ACCESS_KEY=$AWS_ECR_CRED'
-              sh 'ECR_LOGIN_CMD=$(aws ecr get-login-password --region us-east-2 --no-include-email)'
+              sh 'ECR_LOGIN_CMD=$(aws ecr get-login-password --region us-east-2)'
               sh 'echo "$ECR_LOGIN_CMD" | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
               sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
 
