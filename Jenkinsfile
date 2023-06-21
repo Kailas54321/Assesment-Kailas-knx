@@ -46,7 +46,7 @@ stage('Deploy to ECS') {
             steps {
                 script {
                     // Deploy the Docker image to ECS using the ECS plugin
-                    withAWS(credentials: 'AWS_ECR_CRED') {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ECR_CRED']]){
                         // Configure ECS deployment
                         def cluster = 'ecs_cluster' // Replace with your ECS cluster name
                         def serviceName = 'my-ecs-service' // Replace with your ECS service name
