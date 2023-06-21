@@ -11,16 +11,18 @@ pipeline {
             steps {
                 git branch: 'main', credentialsId: 'abc_tkn', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
           }
-         
+
         }
         stage('Build') { 
             steps {
-             sh 'docker build -t knx1:$BUILD_NUMBER .'
+             sh 'docker build -t knx1:$latest .'
             }
           }
           
            stage('push') { 
             steps {
+              sh 'export AWS_ACCESS_KEY_ID=$AWS_ECR_CRED'
+              sh 'export AWS_SECRET_ACCESS_KEY=$AWS_ECR_CRED'
               sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
               sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
               
