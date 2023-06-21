@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-             sh 'docker build -t knx-task:latest .'
+             sh 'docker build -t knx-task:$BUILD_NUMBER .'
             }
           }
           
