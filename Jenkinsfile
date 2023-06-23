@@ -55,15 +55,15 @@ pipeline {
 stage('Deploy to ECS') {
             steps {
                 script {
-                    // Deploy the Docker image to ECS using the ECS plugin
+                    
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ECR_CRED']]){
-                        // Configure ECS deployment
-                        def cluster = 'ecs_cluster' // Replace with your ECS cluster name
-                        def serviceName = 'ESC_SERVICE' // Replace with your ECS service name
-                        def taskDefinition = 'task-de' // Replace with your Task Definition ARN
+                        
+                        def cluster = 'ecs_cluster' 
+                        def serviceName = 'task-service' 
+                        def taskDefinition = 'task-de' 
                         def region = 'us-east-2' 
 
-                        // Update ECS service with the new task definition
+                        
                         sh "aws --region ${region} ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
                     }
                 }
