@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-             sh 'docker build -t knx:$BUILD_NUMBER .'
+             sh 'docker build -t knx:latest .'
             }
           }
           
@@ -40,8 +40,8 @@ pipeline {
                 // sh 'aws ecr get-login --region us-east-2 --profile Kailas | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
               //  sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
-                sh 'docker tag knx:latest 079200857347.dkr.ecr.us-ease-2.amazonaws.com/knx'
-                sh 'docker push 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx'
+                sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+                sh 'docker push 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
             }
           }
     //       stage('pull & deploy') { 
