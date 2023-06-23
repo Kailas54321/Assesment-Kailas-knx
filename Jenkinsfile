@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-             sh 'docker build -t knx-task:$BUILD_NUMBER .'
+             sh 'docker build -t knx:$BUILD_NUMBER .'
             }
           }
           
@@ -26,18 +26,20 @@ pipeline {
         //       sh 'ECR_LOGIN_CMD=$(aws ecr get-login-password --region us-east-2)'
         //       sh 'echo "$ECR_LOGIN_CMD" | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
         //       sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+            sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
 
         //     }
         //   }
         stage('push') { 
             steps {
-              sh 'docker tag knx-task:$BUILD_NUMBER kailas54321/knx-task:$BUILD_NUMBER'
+             // sh 'docker tag knx:$BUILD_NUMBER kailas54321/knx:$BUILD_NUMBER'
               //sh'echo $dockerhub_PSW | docker login -u $dockerhub_PSW -p ${dockerhub}'
-              sh 'sudo chmod 666 /var/run/docker.sock'
+             // sh 'sudo chmod 666 /var/run/docker.sock'
              // sh 'cat password.txt | docker login --username kailas54321 --password-stdin'
               //sh'echo $dockerhub_PSW docker login -u $dockeecho $dockerhub_PSW rhub_USR -p ${dockerhub}'
-              sh'docker push kailas54321/knx-task:$BUILD_NUMBER'
-
+             // sh'docker push kailas54321/knx-task:$BUILD_NUMBER'
+                sh 'docker tag hello-world:latest 079200857347.dkr.ecr.us-ease-2.amazonaws.com/knx'
+                sh 'docker push 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx'
             }
           }
     //       stage('pull & deploy') { 
