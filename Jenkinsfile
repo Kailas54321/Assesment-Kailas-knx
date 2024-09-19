@@ -1,11 +1,11 @@
 pipeline {
     
-        agent any
+        agent 'ecs-agent'
         
         
-        environment{
-        	dockerhub=credentials('dockerhub')
-           }
+        // environment{
+        // 	dockerhub=credentials('dockerhub')
+        //    }
         stages {
           stage('pull-code') { 
             steps {
