@@ -1,6 +1,8 @@
 pipeline {
     
-        agent 'ecs-agent'
+        agent {
+            label 'ecs-agent'
+        } 
         
         
         // environment{
@@ -9,7 +11,7 @@ pipeline {
         stages {
           stage('pull-code') { 
             steps {
-                git branch: 'main', credentialsId: 'abc_tkn', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
+                git branch: 'main', credentialsId: 'git-koken', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
           }
 
         }
