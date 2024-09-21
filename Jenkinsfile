@@ -1,8 +1,8 @@
 pipeline {
     
-        agent {
-            label 'ecs-agent'
-        } 
+        // agent {
+        //     label 'ecs-agent'
+        // } 
         
         
         // environment{
@@ -11,7 +11,7 @@ pipeline {
         stages {
           stage('pull-code') { 
             steps {
-                git branch: 'main', credentialsId: 'git-koken', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
+                git branch: 'main', credentialsId: 'git-token', url: 'https://github.com/Kailas54321/Assesment-Kailas-knx.git'
           }
 
         }
@@ -41,9 +41,9 @@ pipeline {
              // sh'docker push kailas54321/knx-task:$BUILD_NUMBER'
                 // sh 'aws ecr get-login --region us-east-2 --profile Kailas | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
               //  sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
-                sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 079200857347.dkr.ecr.us-east-2.amazonaws.com'
-                sh 'docker tag knx:latest 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
-                sh 'docker push 079200857347.dkr.ecr.us-east-2.amazonaws.com/knx:latest'
+                sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 024524131218.dkr.ecr.us-east-2.amazonaws.com'
+                sh 'docker tag jenkins-ecr:latest 024524131218.dkr.ecr.us-east-2.amazonaws.com/jenkins-ecr:latest'
+                sh 'docker push 024524131218.dkr.ecr.us-east-2.amazonaws.com/jenkins-ecr:latest'
             }
           }
     //       stage('pull & deploy') { 
@@ -58,22 +58,22 @@ pipeline {
     //   } 
     // }
 
-stage('Deploy to ECS') {
-            steps {
-                script {
+// stage('Deploy to ECS') {
+//             steps {
+//                 script {
                     
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ECR_CRED']]){
+//                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_ECR_CRED']]){
                         
-                        def cluster = 'ECS_CLUSTER' 
-                        def serviceName = 'task-service' 
-                        def taskDefinition = 'ecs-task' 
-                        def region = 'us-east-2' 
+//                         def cluster = 'ECS_CLUSTER' 
+//                         def serviceName = 'task-service' 
+//                         def taskDefinition = 'ecs-task' 
+//                         def region = 'us-east-2' 
 
                         
-                        sh "aws --region ${region} ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
-                    }
-                }
-            }
-        }   
-    }
-}
+//                         sh "aws --region ${region} ecs update-service --cluster ${cluster} --service ${serviceName} --task-definition ${taskDefinition}"
+//                     }
+//                 }
+//             }
+//         }   
+//     }
+// }
