@@ -1,6 +1,6 @@
 pipeline {
     
-        // agent {
+         agent any
         //     label 'ecs-agent'
         // } 
         
